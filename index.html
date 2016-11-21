@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Гибридные процессоры на примере UltraSparc T2+</title>
+		<title>OpenNebula</title>
 
-		<meta name="description" content="Гибридные процессоры на примере UltraSparc T2+">
+		<meta name="description" content="OpenNebula">
 		<meta name="author" content="Krosheninnikov Artem">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,11 +41,8 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section id="start">
-					<h1>Гибридные процессоры на примере T2+ от SUN</h1>
+					<h1>OpenNebula</h1>
 					<h3>Крошенинников Артем, 633 гр.</h3>
-					<!--<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>-->
 				</section>
 
 				<section id="themes">
@@ -69,235 +66,100 @@
 
 				<section>
 					<p>
-						UltraSPARC T2 («Niagara 2») — многоядерный многопотоковый микропроцессор от Sun Microsystems.
-					</p>
-					<p class="fragment">Представитель семейства процессоров SPARC и последователь UltraSPARC T1</p>
-					<p class="fragment">T2 -- октябрь 2007 года,</p>
-					<p class="fragment">T2 Plus -- апрель 2008 года,</p>
-					<p class="fragment">T3 -- 2010 год.</p>
+						OpenNebula — платформа облачных вычислений, предназначенная для управления
+						гетерогенными инфраструктурами распределенных дата-центров. Платформа OpenNebula
+						управляет виртуальной инфраструктурой дата-центра так, что позволяет создавать
+						приватное, публичное или гибридное облако, в результате получая IaaS. OpenNebula —
+						свободное программное обеспечение, лиценция Apache License v2.
 				</section>
 
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
-						<h2>Особенности T2</h2>
+						<h2>Релиз 5.2</h2>
 						<ul>
-						<li>65 нм техпроцесс</li>
-						<li>8 ядер, у каждого ядра по 8 потоков</li>
-						<li>Увеличение тактовой частоты с 1,2 до 1,4 ГГц</li>
-						<li>Один порт PCI Express вместо интерфейса JBus</li>
-						<li>Два порта 10 Gigabit Ethernet</li>
-						<li>Размер кэша L2 увеличен с 3 до 4 МБ</li>
-						<li>2 целочисленных АЛУ на ядро вместо одного</li>
-						<li>Одно устройство с плавающей точкой на ядро (а не на процессор, как раньше)</li>
-						<li>Восемь устройств шифрования, каждое поддерживает DES, 3DES, AES, RC4, SHA1, SHA256, MD5, RSA-2048, ECC, CRC32</li>
+							<li>Добавлен новый модуль IPAM для управления IP-адресами из коробки</li>
+							<li>Добавлены групповые токены для того, чтобы можно было использовать ONE под несколько проектов
+								сразу</li>
+							<li>Обновлен интерфейс Sunstone</li>
+							<li>Добавлено ограничение сети для каждой VM как через KVM, так и vCenter</li>
+							<li>etc.</li>
 						</ul>
-					</section>
-					<section>
-						<h2>Отличительные особенности T2+</h2>
-						<ul>
-							<li>Возможность использовать в двух- и четырех-процессорных конфигурациях</li>
-							<li>Удален встроенный в чип Ethernet-контроллер на 10-ГБит</li>
-						</ul>
-					</section>
-
-					<section>
-						<p>Главная особенность T2+ по сравнению с T2 -- принцип SMP</p>
-						<p>Симметричная мультипроцессорность (Symmetric Multiprocessing, сокращённо SMP)
-							— архитектура многопроцессорных компьютеров, в которой два или более одинаковых процессора
-							сравнимой производительности подключаются единообразно к общей памяти
-							(и периферийным устройствам) и выполняют одни и те же функции</p>
 					</section>
 					<section>
 						<br>
-						<a href="#/2">
-							<img width="80%" height="70%" data-src="Sun_UltraSPARC_T2.jpg">
-						</a>
+							<img width="80%" height="70%" data-src="sunstone.png">
 					</section>
-				</section>
 
-				<section>
-						<img width="80%" height="50%" data-src="spark_comparison_1.png">
-				</section>
-				<section>
-						<img width="80%" height="70%" data-src="sparc_comparison_2.png">
-				</section>
-
-				<section>
-					<h2>Виртуализация</h2>
-					<p>
-						Как и T1, T2 поддерживает гипер-привилегированный режим (Hyper-Privileged execution mode). В этом режиме работает гипервизор SPARC, который может разбить T2 на 64 логических домена (LDoms), в каждом из которых может работать своя операционная система</p>
-				</section>
-
-				<section>
-					<h2>Logical Domains (LDoms или LDOM)</h2>
-					<p>Технология виртуализации и разделения физических ресурсов для линейки UNIX-серверов, основанных на архитектуре SPARC V9
-					</p>
-					<p>Каждый логический домен представляет собой полноценную виртуальную машину с набором аппаратных ресурсов. Операционные системы, работающие внутри отдельных доменов, могут независимо запускаться, останавливаться или перезагружаться.</p>
-				</section>
-
-				<section>
-					<p>
-						<img width="80%" height="70%" data-src="LDOM.jpg">
-					</p>
-
-				</section>
-
-				<!--<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>-->
-
-				<section>
-					<section id="fragments">
-						<p>В случае серверной конфигурации с использованием общего хранилища данных,
-							появляется возможность живой миграции логических доменов с одного сервера на другой без необходимости их останова
-							(начиная с Oracle VM Server for SPARC версии 2.1). При этом используется метод безопасной высокоскоростной передачи между серверами содержимого памяти виртуальных машин, при помощи шифрования выделенными модулями криптографических ускорителей, имеющимися во всех процессорах микроархитектуры sun4v.</p>
-					</section>
 					<section>
-						<h2>Область применения</h2>
-						<p class="fragment grow">“Тяжелые” серверные приложения</p>
-						<p class="fragment grow">ERP-системы SAP, CRM-системы Siebel</p>
-						<p class="fragment grow">Oracle DB</p>
-						<p class="fragment grow">Виртуализация с помощью контейнеров Solaris</p>
-						<!--<p>Highlight <span class="fragment highlight-red">red</span> <span class="fragment highlight-blue">blue</span> <span class="fragment highlight-green">green</span></p>
-					--></section>
-				</section>
-
-				<section>
-					<img width="80%" height="50%" data-src="core.jpg">
-				</section>
-
-				<section>
-					<h2>Универсальность процессоров UltraSparc T2/T2+</h2>
-					<ul>
-						<li>Вычисления</li>
-						<li>Сетевые функции</li>
-						<li>Безопасность</li>
-						<li>Ввод\вывод данных</li>
-						<li>Интегрированная поддержка OS Solaris</li>
-					</ul>
-				</section>
-
-				<section><p>SPU на каждом ядре работает параллельно с ядром на той же самой частоте.
-					Модуль шифрования/хеширования поддерживает DES, 3DES, AES, RC4, SHA1, SHA256, MD5, RSA-2048, ECC, CRC32.</p>
-					<p>SPU разрабатывался, чтобы достигнуть проводной скорости шифрования и дешифрования на
-					процессорных портах 10 GbE.</p></section>
-
-				<section>
-					<h2>Выводы</h2>
-					<ul>
-						<li>Архитектурный подход UltraSparc T2/T2+ положил начало развитию APU (AMD Fusion, Intel SandyBridge и далее)</li>
-						<li>Размещение всех вычислительных юнитов на одном кристалле позволяло снизить энергопотребление и тепловыделение</li>
-						<li>Многопроцессорный подход позволил не увеличивать тактовую частоту, а наращивать количество потоков</li>
-						<li>Интеграция всех юнитов позволила увеличить производительность во всех сферах</li>
-					</ul>
-				</section>
-				<!--<section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
+						<h2>История OpenNebula</h2>
+							<img width="80%" height="70%" data-src="history.png">
 					</section>
 
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
+					<section>
+						<h2>Структура OpenNebula</h2>
+							<img width="80%" height="70%" data-src="one_high.png">
 					</section>
-				</section>-->
 
-				<!--<section>
-					<h2>Pretty Code</h2>
-					<pre><code class="hljs" data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section>
 
 				<section>
-					<h2>Marvelous List</h2>
+					 <p>OpenNebula управляет хранилищем, сетью, виртуализацией, осуществляет мониторинг
+						 и поддерживает различные технологии безопасности, создавая многосвязные сервисы на распределенной
+						 инфраструктуре.</p>
+				</section>
+
+				<section>
+					<h2>Основные компоненты облачной архитектуры</h2>
 					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
+						<li>Storage</li>
+						<li>Networking</li>
+						<li>Virtualization</li>
 					</ul>
 				</section>
 
 				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
+					<h2>Основные компоненты OpenNebula</h2>
+					<ul>
+						<li>Фронт-енд, который исполняет сервисы ONE</li>
+						<li>Хосты (созданные с помощью гипервизора), которые предоставляют
+							ресурсы, необходимые виртуальным машинам.</li>
+						<li>Хранилище данных, содержащее базовые образы ВМ.</li>
+						<li> Сети -- используются для связи между удаленными серверами</li>
+					</ul>
 				</section>
 
 				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							</tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							</tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>-->
+					<h2>Основные компоненты OpenNebula (2\2)</h2>
+					<ul>
+						<li>Interfaces & APIs – интерфейсы для взаимодействия с физическими и виртуальными
+							ресурсами</li>
+						<li>User and Groups -- поддержка аккаунтов, групп, авторизации. Разделение прав по типу UNIX.</li>
+						<li>Hosts and Virtualization -- поддержка Xen, KVM, VMware.</li>
+						<li>Networking -- поддержка VLANs и Open vSwitch.</li>
 
-				<!--<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>-->
+					</ul>
+				</section>
+				<section>
+					OpenNebula имеет репозиторий образов, репозиторий шаблонов для ВМ и для виртуальных сетей
+				</section>
+
+				<section>
+					<h2>Структура OpenNebula</h2>
+						<img width="80%" height="70%" data-src="datastoreoverview.png">
+				</section>
+
+				<section>
+					<h2>OpenNebula Services</h2>
+					<ul>
+						<li>Демон управления (oned) и планировщик
+							(mm_sched)</li>
+						<li>Демон, отвечающий за мониторинг и за аккаунтинг (onecctd)</li>
+						<li>Веб-интерфейс (Sunstone)</li>
+						<li>Демоны, обеспечивающие доступ к другим облакам (EC2- query или occi)</li>
+					</ul>
+				</section>
+
 
 				<section>
 					<h2>Спасибо за внимание</h2>
@@ -306,32 +168,6 @@ function linkify( selector ) {
 						<a href="#/start">В начало</a>.
 					</p>
 				</section>
-
-				<!--<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>-->
-
-				<!--<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe data-src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
-
-
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
--->
 			</div>
 
 		</div>
@@ -349,7 +185,7 @@ function linkify( selector ) {
 				history: true,
 				center: true,
 
-				transition: 'zoom', // none/fade/slide/convex/concave/zoom
+				transition: 'none', // none/fade/slide/convex/concave/zoom
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
